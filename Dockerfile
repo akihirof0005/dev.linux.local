@@ -1,11 +1,14 @@
 FROM archlinux/base
 
-RUN yes "" | pacman -Syy wget neovim base-devel git tmux 
-RUN useradd -m -s /bin/bash gly
-RUN echo 'Defaults visiblepw'             >> /etc/sudoers
-RUN echo 'gly ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-USER gly
-WORKDIR /home/gly
+RUN yes "" | pacman -Syy base-devel 
+RUN yes "" | pacman -Syy wget neovim git tmux 
+
+RUN useradd -m -s /bin/bash docker
+RUN echo 'Defaults visiblepw'            >> /etc/sudoers
+RUN echo 'docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+
+USER docker 
+WORKDIR /home/docker
 RUN git clone https://aur.archlinux.org/c9.core.git
 RUN cd c9.core \
 && echo "  git reset HEAD --hard" | sed 's:  git reset HEAD --hard bash:git checkout HEAD -- node_modules:g' \
