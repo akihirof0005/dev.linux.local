@@ -5,5 +5,5 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - ./src:/home/gly-docker
+      - ./src:/home/docker
     restart: unless-stopped
