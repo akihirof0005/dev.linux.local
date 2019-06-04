@@ -15,4 +15,4 @@ RUN cd c9.core \
 && yes "" | makepkg -si
 RUN rm -r ~/c9.core
 
-ENTRYPOINT ["sh", "-c", "/usr/bin/node /opt/cloud9/server.js -l 0.0.0.0 -p 8080 -w /home/gly -a : "]
+ENTRYPOINT ["sh", "-c", "/usr/bin/node /opt/cloud9/server.js -l 0.0.0.0 -p 8080 -w /home/docker -a : "]
