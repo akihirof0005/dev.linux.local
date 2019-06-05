@@ -1,5 +1,6 @@
 FROM archlinux/base
 
+RUN curl https://www.archlinux.org/mirrorlist/?country=JP&protocol=http&protocol=https&ip_version=4&ip_version=6 > /etc/pacman.d/mirrorlist
 RUN yes "" | pacman -Syy base-devel 
 RUN yes "" | pacman -Syy curl neovim git tmux 
 
@@ -9,6 +10,7 @@ RUN echo 'docker ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 USER docker 
 WORKDIR /home/docker
+
 RUN git clone https://aur.archlinux.org/c9.core.git
 RUN cd c9.core \
 && echo "  git reset HEAD --hard" | sed 's:  git reset HEAD --hard bash:git checkout HEAD -- node_modules:g' \
