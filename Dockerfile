@@ -1,6 +1,5 @@
 FROM archlinux/base
-
-RUN curl https://www.archlinux.org/mirrorlist/?country=JP&protocol=http&protocol=https&ip_version=4&ip_version=6 > /etc/pacman.d/mirrorlist
+RUN wget https://www.archlinux.org/mirrorlist/\?country\=JP\&protocol\=https\&ip_version\=4\&ip_version\=6 -O /etc/pacman.d/mirrorlist && sed -e "s/^#//g" /etc/pacman.d/mirrorlist
 RUN yes "" | pacman -Syy base-devel 
 RUN yes "" | pacman -Syy curl neovim git tmux 
 
