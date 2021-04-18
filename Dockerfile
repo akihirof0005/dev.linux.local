@@ -1,7 +1,7 @@
-FROM archlinux/base
-RUN curl https://www.archlinux.org/mirrorlist/\?country\=JP\&protocol\=https\&ip_version\=4\&ip_version\=6 | sed -e "s/^#//g" > /etc/pacman.d/mirrorlist
-RUN yes "" | pacman -Syy base-devel
-RUN yes "" | pacman -Syy curl neovim git tmux
+FROM archlinux/base:latest
+RUN curl "https://archlinux.org/mirrorlist/?country=JP&protocol=https&ip_version=4&ip_version=6" | sed -e "s/^#//g" > /etc/pacman.d/mirrorlist
+RUN pacman -Syyu --noconfirm
+RUN pacman -Syy --noconfirm base-devel curl neovim git tmux
 
 RUN useradd -m -s /bin/bash docker
 RUN echo 'Defaults visiblepw'            >> /etc/sudoers
