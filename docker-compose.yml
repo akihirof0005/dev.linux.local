@@ -6,13 +6,3 @@ services:
       - 8080:8080
     volumes:
       - ./src:/home/docker
-    entrypoint:
-    - /usr/bin/node
-    - /opt/cloud9/server.js
-    - -l
-    - 0.0.0.0
-    - -p 8080
-    - -w
-    - /home/docker
-    - -a 
-    -  : 
